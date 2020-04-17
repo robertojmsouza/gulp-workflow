@@ -10,7 +10,7 @@ npm install -g gulp
 - In terminal/command line, `cd` into your project directory
 - Clone this workflow 
 ```
-git clone https://github.com/fibuladigital/gulp-workflow.git .
+git clone https://github.com/fibuladigital/gulp-workflow.git
 ```
 - Install Gulp dependencies 
 ```
