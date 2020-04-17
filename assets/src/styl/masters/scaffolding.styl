@@ -1,0 +1,37 @@
+/* scaffolding
+______________________________________________ */
+
+html
+    font-size 12px
+
+@media (min-width $screen-sm) and (max-width $screen-md)  
+    html
+        font-size 14px
+
+@media (min-width $screen-md) and (max-width $screen-lg)  
+    html
+        font-size 16px
+        
+@media (min-width $screen-lg)
+    html
+        font-size 18px 
+
+body
+    color $color_2
+    $font(p1, normal, primary, "")
+
+p
+    margin 0
+        
+a
+    color $color_0
+
+    &:hover
+        color $color_0
+        opacity .75
+        text-decoration none
+
+address, dl, ol, ul
+    display inline-block
+    margin 0
+    padding 0
