@@ -1,12 +1,13 @@
 const   gulp        = require( 'gulp' ),
         browsersync = require( 'browser-sync' ),
+        cssnano     = require( 'cssnano' );
         del         = require( 'del' ),
         concat      = require( 'gulp-concat' ),
-        cssnano     = require( 'gulp-cssnano' ),
         filesize    = require( 'gulp-filesize' ),
         htmlmin     = require( 'gulp-htmlmin' ),
         imagemin    = require( 'gulp-imagemin' ),
         jshint      = require( 'gulp-jshint' ),
+        postcss     = require( 'gulp-postcss' );
         stylus      = require( 'gulp-stylus' ),
         svgmin      = require( 'gulp-svgmin'),
         uglify      = require( 'gulp-uglify' );
@@ -76,9 +77,12 @@ function clean() {
 };
 
 function css() {
+    var plugins = [
+        cssnano()
+    ];
     return gulp.src(paths.src.styl)
         .pipe(stylus())
-        .pipe(cssnano())
+        .pipe(postcss(plugins))
         .pipe(concat('main.css'))
         .pipe(gulp.dest(paths.dist.css))
         .pipe(browsersync.stream())
@@ -137,9 +141,12 @@ function video() {
 };
 
 function vendorscss() {
+    var plugins = [
+        cssnano()
+    ];
     return gulp.src(paths.src.vendorcss)
         .pipe(concat('vendors.css'))
-        .pipe(cssnano())
+        .pipe(postcss(plugins))
         .pipe(gulp.dest(paths.dist.css))
         .pipe(filesize());
 };
@@ -159,7 +166,6 @@ const watch = () =>  {
     gulp.watch(paths.src.js,    gulp.series(js, reload));
     gulp.watch(paths.src.svg,   gulp.series(svg, reload));
     gulp.watch(paths.src.video, gulp.series(video, reload));
-
 };
 
 const build = gulp.series(clean, css, fonts, html, img, js, svg, video, vendorscss, vendorsjs, serve, watch);
