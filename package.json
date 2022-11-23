@@ -15,7 +15,7 @@
   "homepage": "https://github.com/fibuladigital/gulp-workflow#readme",
   "dependencies": {
     "bootstrap": "^4.1.3",
-    "browser-sync": "^2.26.7",
+    "browser-sync": "^2.27.10",
     "del": "^3.0.0",
     "fullpage.js": "^3.0.5",
     "gulp": "^4.0.1",
